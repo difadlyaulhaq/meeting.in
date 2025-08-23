@@ -2,6 +2,7 @@
 
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -21,8 +22,13 @@ const Sidebar = () => {
                 'bg-indigo-700 hover:bg-indigo-600': isActive
               })}
             >
-              {/* Anda bisa menambahkan icon di sini jika ada */}
-              <p className="font-semibold">
+              <Image
+                src={link.imgURL}
+                alt={link.label}
+                width={24}
+                height={24}
+              />
+              <p className='text-lg font-semibold max-lg:hidden '>
                 {link.label}
               </p>
             </Link>
