@@ -19,7 +19,7 @@ const Sidebar = () => {
               href={link.route}
               key={link.label}
               className={cn('flex gap-4 items-center p-4 rounded-lg justify-start transition-colors duration-200 hover:bg-slate-700', {
-                'bg-indigo-700 hover:bg-indigo-600': isActive
+                ' hover:bg-indigo-600': isActive
               })}
             >
               <Image
