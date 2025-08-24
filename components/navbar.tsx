@@ -1,7 +1,9 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import MobileNav from './mobileNav'
+import { SignedIn, UserButton } from '@clerk/nextjs'
 
 
 
@@ -21,7 +23,9 @@ const Navbar = () => {
         </p>
       </Link>
       <div className='flex-between gap-5'>
-        {/* Clerk - user management */}
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
         <MobileNav />
       </div>
       </nav>
