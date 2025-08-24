@@ -5,11 +5,10 @@ import Image from 'next/image'
 import MobileNav from './mobileNav'
 import { SignedIn, UserButton } from '@clerk/nextjs'
 
-
-
 const Navbar = () => {
   return (
-    <nav className='flex justify-between fixed z-50 w-full bg-black px-6 py-4 lg:10'>
+    // 1. Pastikan nav utama memiliki 'flex', 'justify-between', dan 'items-center'
+    <nav className='flex items-center justify-between fixed z-50 w-full bg-black px-6 py-4 lg:px-10'>
         <Link href='/' className='flex items-center gap-1'>
           <Image
             src='/icons/logo.svg'
@@ -22,7 +21,9 @@ const Navbar = () => {
           Meeting.in
         </p>
       </Link>
-      <div className='flex-between gap-5'>
+      
+      {/* 2. Grup ikon juga menggunakan 'flex' dan 'items-center' agar rapi berdampingan */}
+      <div className='flex items-center gap-5'>
         <SignedIn>
           <UserButton />
         </SignedIn>

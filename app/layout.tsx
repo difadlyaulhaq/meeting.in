@@ -25,7 +25,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider>
+      <ClerkProvider
+        appearance={{
+          layout: {
+            logoImageUrl: '/icons/logo.svg',
+          },
+          variables: {
+            colorPrimary: "#0E78F9",
+            colorText: "white",
+            colorBackground: "#1c1f2e",
+            colorInputBackground: "#252a41",
+            colorInputText: "#fff",  
+          },
+          elements: {
+            
+            socialButtonsIconButton__github: {
+              filter: 'invert(1)', // Ini akan membuat ikon GitHub menjadi putih
+            },
+          }
+        }} >
         <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
         {children}
