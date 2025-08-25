@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import MeetingModal from './MeetingModal'
 import { useUser } from '@clerk/nextjs'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
-// Hapus baris 'import { link } from 'fs'' yang menyebabkan error
+import { v4 as uuidv4 } from 'uuid'; // 👈 1. Impor uuid
 
 const MeetingTypeList = () => {
     const router = useRouter();
@@ -26,7 +26,8 @@ const MeetingTypeList = () => {
       if (!client || !user) return;
       
       try {
-        const id = crypto.randomUUID();
+        // 👇 2. Ganti crypto.randomUUID() dengan uuidv4()
+        const id = uuidv4(); 
         const call = client.call('default', id);
 
         if(!call) throw new Error('Failed to create call');
@@ -45,7 +46,6 @@ const MeetingTypeList = () => {
 
         setCallDetails(call);
 
-        // Redirect hanya jika ini adalah instant meeting (tidak ada deskripsi yang di-set sebelumnya)
         if(!values.description){
           router.push(`/meeting/${call.id}` );
         }
@@ -85,7 +85,6 @@ const MeetingTypeList = () => {
           handleClick={() => router.push('/recordings')}
         />
 
-      {/* Modal untuk Instant Meeting */}
       <MeetingModal
         isOpen={meetingState === 'isInstantMeeting'}
         onClose={() => setMeetingState(undefined)}
