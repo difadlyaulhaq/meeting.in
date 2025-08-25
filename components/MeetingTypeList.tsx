@@ -6,7 +6,7 @@ import MeetingModal from './MeetingModal'
 import { useUser } from '@clerk/nextjs'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { v4 as uuidv4 } from 'uuid'; // 👈 1. Impor uuid
-
+import { toast} from "sonner"
 const MeetingTypeList = () => {
     const router = useRouter();
     const [meetingState, setMeetingState] =
@@ -21,12 +21,15 @@ const MeetingTypeList = () => {
     });
 
     const [callDetails, setCallDetails] = useState<Call>()
-
+    
     const createMeeting = async () => {
       if (!client || !user) return;
       
       try {
         // 👇 2. Ganti crypto.randomUUID() dengan uuidv4()
+        if (!values.dateTime) {
+          toast('Please select a valid date and time');
+        }
         const id = uuidv4(); 
         const call = client.call('default', id);
 
@@ -48,9 +51,11 @@ const MeetingTypeList = () => {
 
         if(!values.description){
           router.push(`/meeting/${call.id}` );
+          toast('Meeting created successfully');
         }
       } catch (error) {
         console.error("Failed to create meeting:", error);
+        toast.error('Failed to create meeting. Please try again.');
       }
     }  
 
