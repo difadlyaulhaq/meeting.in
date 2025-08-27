@@ -1,21 +1,25 @@
 'use client';
+
 import { DeviceSettings, VideoPreview, useCall } from '@stream-io/video-react-sdk';
 import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 
-// 1. Definisikan props yang akan diterima oleh komponen ini
+// Definisikan props yang akan diterima oleh komponen ini
 interface MeetingSetupProps {
   setIsSetupComplete: (value: boolean) => void;
 }
 
 const MeetingSetup = ({ setIsSetupComplete }: MeetingSetupProps) => {
   const [isMicCamToggledOn, setIsMicCamToggledOn] = useState(false);
+
+  // Dapatkan objek 'call' dari context yang disediakan oleh <StreamCall>
   const call = useCall();
 
   if (!call) {
     throw new Error('useCall must be used within StreamCall component');
   }
 
+  // useEffect untuk mengaktifkan/menonaktifkan kamera & mikrofon dengan aman
   useEffect(() => {
     if (isMicCamToggledOn) {
       call?.camera.enable();
@@ -41,12 +45,11 @@ const MeetingSetup = ({ setIsSetupComplete }: MeetingSetupProps) => {
         </label>
         <DeviceSettings />
       </div>
-      {/* 2. Tombol ini akan memanggil prop setIsSetupComplete saat diklik */}
       <Button 
         className='rounded-md bg-green-500 px-4 py-2.5'
         onClick={() => {
-          call.join();
-          setIsSetupComplete(true);
+          call.join(); // Bergabung ke panggilan
+          setIsSetupComplete(true); // Memberi tahu parent bahwa setup selesai
         }}
       >
         Join meeting

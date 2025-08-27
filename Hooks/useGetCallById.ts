@@ -1,22 +1,34 @@
-import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
+import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 
-export const useGetCallById = (id:string | string[]) => {
-  const [call, setCall] = useState<Call>()
-  const [isCallLoading, setIsCallLoading] = useState(true)
-
+export const useGetCallById = (id: string | string[]) => {
+  const [call, setCall] = useState<Call>();
+  const [isCallLoading, setIsCallLoading] = useState(true);
   const client = useStreamVideoClient();
+
   useEffect(() => {
-   if (!client) return;
-   const loadCall = async () => {
-    const {calls} = await client.queryCalls({
-        filter_conditions:{
-            id
+    if (!client || !id) return;
+
+    const loadCall = async () => {
+      setIsCallLoading(true);
+      try {
+        // Query calls dengan filter berdasarkan ID
+        const { calls } = await client.queryCalls({
+          filter_conditions: { id: id as string },
+        });
+
+        if (calls.length > 0) {
+          setCall(calls[0]);
         }
-    })
-    if(calls.length > 0 ) setCall(calls[0]);
-    setIsCallLoading(false);
-   }
-  }, [client, id])
-  return {call, isCallLoading}
-}
+      } catch (error) {
+        console.error('Error fetching call:', error);
+      } finally {
+        setIsCallLoading(false);
+      }
+    };
+
+    loadCall();
+  }, [client, id]); // Dependency array yang benar untuk mencegah loop
+
+  return { call, isCallLoading };
+};
