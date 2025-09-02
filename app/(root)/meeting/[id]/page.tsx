@@ -5,10 +5,11 @@ import MeetingSetup from '@/components/MeetingSetup';
 import { useGetCallById } from '@/Hooks/useGetCallById';
 import { useUser } from '@clerk/nextjs';
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk';
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 
-const Meeting = ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const Meeting = ({ params }: { params: Promise<{ id: string }> }) => {
+  // Fix 1: Unwrap params using React.use() for Next.js 15
+  const { id } = use(params);
   const { user, isLoaded } = useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   const { call, isCallLoading } = useGetCallById(id);
