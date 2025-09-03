@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".", // <-- TAMBAHKAN BARIS INI
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
