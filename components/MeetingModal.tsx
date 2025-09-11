@@ -1,6 +1,5 @@
 "use client";
 import { ReactNode } from "react";
-// 1. Impor 'DialogTitle' dari komponen dialog UI Anda
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -14,7 +13,7 @@ interface MeetingModalProps {
   children?: ReactNode;
   handleClick?: () => void;
   buttonText?: string;
-  instantMeeting?: boolean;
+  // 'instantMeeting' tidak digunakan, jadi dihapus
   image?: string;
   buttonClassName?: string;
   buttonIcon?: string;
@@ -28,11 +27,11 @@ const MeetingModal = ({
   children,
   handleClick,
   buttonText,
-  instantMeeting,
   image,
   buttonClassName,
   buttonIcon,
 }: MeetingModalProps) => {
+  // ... (isi komponen tetap sama)
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none bg-black px-6 py-9 text-white">
@@ -42,18 +41,12 @@ const MeetingModal = ({
               <Image src={image} alt="checked" width={72} height={72} />
             </div>
           )}
-          {/* 2. Ganti <h1> dengan <DialogTitle> untuk memenuhi persyaratan aksesibilitas */}
           <DialogTitle className={cn("text-3xl font-bold leading-[42px]", className)}>
             {title}
           </DialogTitle>
-          
           {children}
-
           <Button
-            className={cn(
-              "bg-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0",
-              buttonClassName
-            )}
+            className={cn("bg-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0", buttonClassName)}
             onClick={handleClick}
           >
             {buttonIcon && (
