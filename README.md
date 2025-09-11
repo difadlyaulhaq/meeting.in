@@ -2,7 +2,7 @@
 
 > **Modern video conferencing made simple** | [Live Demo](https://meeting-in.vercel.app/)
 
-A feature-rich video conference application built with Next.js 15, TypeScript, and Stream's real-time technology. This project demonstrates modern web development practices and real-time communication implementation.
+A feature-rich video conference application built with Next.js 15, TypeScript, and Stream real-time technology. This project demonstrates modern web development practices and real-time communication implementation.
 
 **🎯 Inspired by**: [JavaScript Mastery Tutorial](https://www.youtube.com/watch?v=R8CIO1DZ2b8)
 
