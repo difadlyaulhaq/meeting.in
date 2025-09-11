@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 'use client';
 
 import { useState } from 'react';
@@ -121,7 +120,7 @@ const MeetingTypeList = () => {
                 </label>
                 <Textarea
                   className="min-h-[100px] border-none bg-dark-3 text-white placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0 resize-none rounded-lg"
-                  placeholder="What's this meeting about?"
+                  placeholder="What&apos;s this meeting about?"
                   onChange={(e) =>
                     setValues({ ...values, description: e.target.value })
                   }
@@ -208,7 +207,7 @@ const MeetingTypeList = () => {
           <div className="flex flex-col gap-4 items-center">
             <div className="bg-black p-4 rounded-lg">
               <p className="text-gray-300 text-sm">
-                You're about to start an instant meeting. Anyone with the link will be able to join.
+                You&apos;re about to start an instant meeting. Anyone with the link will be able to join.
               </p>
             </div>
           </div>

@@ -11,10 +11,24 @@ import MeetingSetup from '@/components/MeetingSetup';
 import MeetingRoom from '@/components/MeetingRoom';
 
 const MeetingPage = () => {
-  const { id } = useParams();
+  const params = useParams();
   const { isLoaded } = useUser();
-  const { call, isCallLoading } = useGetCallById(id);
+  
+  // Type guard untuk memastikan id adalah string
+  const id = params.id;
+  const meetingId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
+  
+  const { call, isCallLoading } = useGetCallById(meetingId);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
+
+  // Handle case ketika id tidak valid
+  if (!meetingId) {
+    return (
+      <p className="text-center text-3xl font-bold text-white">
+        Invalid Meeting ID
+      </p>
+    );
+  }
 
   if (!isLoaded || isCallLoading) return <Loader />;
 
