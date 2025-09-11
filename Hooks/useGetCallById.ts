@@ -24,8 +24,8 @@ export const useGetCallById = (id: string | string[]) => {
         console.error('Error fetching call:', error);
       } finally {
         setIsCallLoading(false);
-      }
-    };
+      } 
+    };// Akhir fungsi loadCall
 
     loadCall();
   }, [client, id]); // Dependency array yang benar untuk mencegah loop
