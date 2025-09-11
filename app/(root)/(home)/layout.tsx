@@ -1,7 +1,15 @@
 import Navbar from '@/components/navbar';
 import Sidebar from '@/components/sidebar';
+import { Metadata } from 'next';
 import React from 'react';
-
+export const metadata: Metadata = {
+  title: "Meeting-in",
+  description: "Simple, Fast, and Secure Video Meetings",
+  icons: {
+    icon: "/icons/logo.svg",
+  },
+  themeColor: "#000000",
+};
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="relative">
