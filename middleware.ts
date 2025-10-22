@@ -1,15 +1,26 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
+// Route yang bisa diakses tanpa login
 const isPublicRoute = createRouteMatcher([
-  '/sign-in(.*)',
-  '/sign-up(.*)',
+  '/',              // Landing page
+  '/sign-in(.*)',   // Sign in pages
+  '/sign-up(.*)',   // Sign up pages
 ])
 
 export default clerkMiddleware(async (auth, req) => {
+  // Jika bukan public route, require authentication
   if (!isPublicRoute(req)) {
     await auth.protect()
   }
+  
+  // Redirect user yang sudah login dari landing page ke dashboard
+  const { userId } = await auth()
+  if (userId && req.nextUrl.pathname === '/') {
+    // Hanya redirect jika dari root path
+    return NextResponse.redirect(new URL('/upcoming', req.url))
+  }
+  
   return NextResponse.next()
 })
 
