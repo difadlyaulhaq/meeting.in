@@ -21,7 +21,7 @@ const UpcomingPage = () => {
         <div className="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800">
           <div className="flex items-center gap-3 mb-2">
             <Clock className="h-5 w-5 text-blue-500" />
-            <h3 className="text-lg font-semibold text-white">Today's Meetings</h3>
+            <h3 className="text-lg font-semibold text-white">Today&apos;s Meetings</h3>
           </div>
           <p className="text-2xl font-bold text-white">0</p>
         </div>
