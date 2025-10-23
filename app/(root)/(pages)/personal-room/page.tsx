@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-import { Copy, Video, User, Link as LinkIcon, Calendar } from "lucide-react";
+import { Copy, Video, User, Link as LinkIcon, Calendar, LucideIcon } from "lucide-react";
 
 import { useGetCallById } from '@/hooks/useGetCallById';
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ const InfoCard = ({
   title,
   description,
 }: {
-  icon: any;
+  icon: LucideIcon;
   title: string;
   description: string;
 }) => {
