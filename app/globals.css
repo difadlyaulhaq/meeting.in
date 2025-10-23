@@ -42,8 +42,14 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
+@layer base {
 :root {
+  --dark-1: #1c1f2e;
+    --dark-2: #161925;
+    --dark-3: #252a41;
+    --dark-4: #1e2139;
+    --blue-1: #0E78F9;
+    --sky-1: #C9DDFF;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -149,4 +155,5 @@
 
 .cl-userButtonPopoverActionButton {
   color: white;
+}
 }
