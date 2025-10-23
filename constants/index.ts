@@ -1,7 +1,7 @@
 export const sidebarLinks = [
   {
     imgURL: '/icons/Home.svg',
-    route: '/upcoming',  // Ubah dari '/' ke '/upcoming'
+    route: '/dashboard',
     label: 'Home',
   },
   {
@@ -24,4 +24,12 @@ export const sidebarLinks = [
     route: '/personal-room',
     label: 'Personal Room',
   },
-];  
+];
+
+export const avatarImages = [
+  '/images/avatar-1.jpeg',
+  '/images/avatar-2.jpeg',
+  '/images/avatar-3.png',
+  '/images/avatar-4.png',
+  '/images/avatar-5.png',
+];
