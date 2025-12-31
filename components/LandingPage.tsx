@@ -10,7 +10,7 @@ export default function LandingPage() {
   // Handler untuk navigasi
   const handleAuthAction = (action: 'sign-in' | 'sign-up') => {
     if (isSignedIn) {
-      router.push('/upcoming');
+      router.push('/dashboard');
     } else {
       router.push(`/${action}`);
     }
@@ -18,7 +18,7 @@ export default function LandingPage() {
 
   const handleGetStarted = () => {
     if (isSignedIn) {
-      router.push('/upcoming');
+      router.push('/dashboard');
     } else {
       router.push('/sign-up');
     }
